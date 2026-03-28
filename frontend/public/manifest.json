@@ -1,0 +1,27 @@
+{
+  "name": "Quick Make — Smart Recipe Suggestions",
+  "short_name": "Quick Make",
+  "description": "AI-powered recipe suggestions based on your ingredients",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#f97316",
+  "orientation": "portrait-primary",
+  "categories": ["food", "lifestyle", "health"],
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable any" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ],
+  "screenshots": [
+    { "src": "/screenshot-home.jpg", "sizes": "1280x720", "type": "image/jpeg", "label": "Home — Quick Make" },
+    { "src": "/screenshot-recipes.jpg", "sizes": "1280x720", "type": "image/jpeg", "label": "Recipe Discovery" }
+  ],
+  "shortcuts": [
+    { "name": "Find Recipes", "url": "/recipes", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] },
+    { "name": "AI Suggest", "url": "/ai-suggest", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Meal Planner", "url": "/meal-planner", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

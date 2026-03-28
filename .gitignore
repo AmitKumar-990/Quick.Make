@@ -1,0 +1,28 @@
+# Dependencies — never commit these
+node_modules/
+**/node_modules/
+
+# Environment files — never commit secrets
+.env
+.env.local
+**/.env
+**/.env.local
+
+# Next.js build output
+.next/
+out/
+
+# Build folders
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Vercel
+.vercel
