@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+export const dynamic = 'force-dynamic';
 export default function AiSuggestPage() {
   return <AiSuggestClient />;
 }
