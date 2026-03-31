@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; // ✅ added useEffect
 import { motion } from 'framer-motion';
 import { Calendar, Sparkles, Save, Trash2, Plus, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -34,19 +34,21 @@ export default function MealPlannerClient() {
       return res.data.plan;
     },
     enabled: !!token,
-    onSuccess: (data: any) => {
-      if (data) {
-        const flatPlan: Record<string, Record<string, string>> = {};
-        DAYS.forEach(day => {
-          flatPlan[day] = {};
-          MEALS.forEach(meal => {
-            flatPlan[day][meal] = data.days?.[day]?.[meal]?.title || '';
-          });
-        });
-        setPlan(flatPlan);
-      }
-    },
   });
+
+  // ✅ FIX: moved onSuccess logic here
+  useEffect(() => {
+    if (savedPlan) {
+      const flatPlan: Record<string, Record<string, string>> = {};
+      DAYS.forEach(day => {
+        flatPlan[day] = {};
+        MEALS.forEach(meal => {
+          flatPlan[day][meal] = savedPlan.days?.[day]?.[meal]?.title || '';
+        });
+      });
+      setPlan(flatPlan);
+    }
+  }, [savedPlan]);
 
   const saveMutation = useMutation({
     mutationFn: async () => {
@@ -110,7 +112,6 @@ export default function MealPlannerClient() {
       </div>
     );
   }
-
   return (
     <div className="min-h-screen bg-surface-50 dark:bg-surface-950 py-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
