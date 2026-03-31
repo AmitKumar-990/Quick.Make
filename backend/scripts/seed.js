@@ -17,7 +17,7 @@ const SAMPLE_RECIPES = [{
             { name: 'Ginger', amount: '1', unit: 'inch' },
             { name: 'Garam Masala', amount: '1', unit: 'tsp' },
             { name: 'Kashmiri Red Chili', amount: '1', unit: 'tsp' },
-            { name: 'Salt', amount: '', unit: 'to taste' },
+            { name: 'Salt', amount: 'as needed', unit: 'to taste' },
         ],
         steps: [
             { stepNumber: 1, instruction: 'Marinate chicken with yogurt, spices, and salt for 30 minutes.' },
@@ -76,7 +76,7 @@ const SAMPLE_RECIPES = [{
             { name: 'Red Chili Flakes', amount: '1', unit: 'tsp' },
             { name: 'Parsley', amount: '1', unit: 'handful' },
             { name: 'Parmesan', amount: '50', unit: 'g', optional: true },
-            { name: 'Salt', amount: '', unit: 'to taste' },
+            { name: 'Salt', amount: 'as needed', unit: 'to taste' },
         ],
         steps: [
             { stepNumber: 1, instruction: 'Cook spaghetti in well-salted boiling water until al dente. Reserve 1 cup pasta water.' },
@@ -144,16 +144,16 @@ const SAMPLE_RECIPES = [{
             { name: 'Red Chilli Powder', amount: '1', unit: 'tsp' },
             { name: 'Biryani Masala', amount: '1.5', unit: 'tsp' },
             { name: 'Kasuri Methi', amount: '1', unit: 'tsp' },
-            { name: 'Salt', amount: '', unit: 'to taste' },
+            { name: 'Salt', amount: 'as needed', unit: 'to taste' },
             { name: 'Bay Leaf', amount: '1', unit: 'piece' },
             { name: 'Cardamom', amount: '3', unit: 'pieces' },
             { name: 'Cloves', amount: '3', unit: 'pieces' },
             { name: 'Black Peppercorns', amount: '5', unit: 'pieces' },
             { name: 'Lemon', amount: '0.5', unit: 'piece' },
             { name: 'Milk', amount: '0.5', unit: 'cup' },
-            { name: 'Saffron', amount: '', unit: 'few strands' },
-            { name: 'Ghee', amount: '', unit: 'as needed' },
-            { name: 'Kewra Water', amount: '', unit: 'few drops' }
+            { name: 'Saffron', amount: 'as needed', unit: 'few strands' },
+            { name: 'Ghee', amount: 'as needed', unit: 'as needed' },
+            { name: 'Kewra Water', amount: 'as needed', unit: 'few drops' }
         ],
         steps: [
             { stepNumber: 1, instruction: 'Soak soya chunks in boiling water for 10–15 minutes, then squeeze out excess water.' },
@@ -180,7 +180,7 @@ const SAMPLE_RECIPES = [{
         ingredients: [
             { name: 'Soya Chunks', amount: '2', unit: 'cups' },
             { name: 'Water', amount: '1', unit: 'litre' },
-            { name: 'Salt', amount: '', unit: 'to taste' },
+            { name: 'Salt', amount: 'as needed', unit: 'to taste' },
             { name: 'Sugar', amount: '1', unit: 'tsp' },
             { name: 'Vinegar', amount: '2', unit: 'tsp' },
             { name: 'Garlic', amount: '6', unit: 'cloves' },
@@ -194,9 +194,9 @@ const SAMPLE_RECIPES = [{
             { name: 'Green Chillies', amount: '4', unit: 'pieces' },
             { name: 'Soy Sauce', amount: '1', unit: 'tbsp' },
             { name: 'Tomato Ketchup', amount: '2', unit: 'tbsp' },
-            { name: 'Oil', amount: '', unit: 'for frying' },
+            { name: 'Oil', amount: 'as needed', unit: 'for frying' },
             { name: 'Spring Onion', amount: '1', unit: 'for garnish' },
-            { name: 'Coriander Leaves', amount: '', unit: 'for garnish' }
+            { name: 'Coriander Leaves', amount: 'as needed', unit: 'for garnish' }
         ],
         steps: [
             { stepNumber: 1, instruction: 'Boil soya chunks with salt, sugar, vinegar, garlic, and ginger for 2–3 minutes. Drain and cool.' },
@@ -238,10 +238,10 @@ const SAMPLE_RECIPES = [{
             { name: 'Turmeric Powder', amount: '0.5', unit: 'tsp' },
             { name: 'Garam Masala', amount: '0.5', unit: 'tsp' },
             { name: 'Kasuri Methi', amount: '1', unit: 'tsp' },
-            { name: 'Fresh Cream', amount: '', unit: 'as needed' },
-            { name: 'Butter', amount: '', unit: 'as needed' },
-            { name: 'Oil', amount: '', unit: 'as needed' },
-            { name: 'Salt', amount: '', unit: 'to taste' }
+            { name: 'Fresh Cream', amount: 'as needed', unit: 'as needed' },
+            { name: 'Butter', amount: 'as needed', unit: 'as needed' },
+            { name: 'Oil', amount: 'as needed', unit: 'as needed' },
+            { name: 'Salt', amount: 'as needed', unit: 'to taste' }
         ],
         steps: [
             { stepNumber: 1, instruction: 'Dry roast coriander, fennel, cumin, red chillies, pepper, cardamom, and cloves. Cool and grind coarsely.' },
@@ -284,9 +284,9 @@ const SAMPLE_RECIPES = [{
             { name: 'Coriander Powder', amount: '2', unit: 'tsp' },
             { name: 'Garam Masala', amount: '0.5', unit: 'tsp' },
             { name: 'Kasuri Methi', amount: '1', unit: 'tsp' },
-            { name: 'Mustard Oil', amount: '', unit: 'as needed' },
-            { name: 'Salt', amount: '', unit: 'to taste' },
-            { name: 'Fresh Coriander Leaves', amount: '', unit: 'for garnish' }
+            { name: 'Mustard Oil', amount: 'as needed', unit: 'as needed' },
+            { name: 'Salt', amount: 'as needed', unit: 'to taste' },
+            { name: 'Fresh Coriander Leaves', amount: 'as needed', unit: 'for garnish' }
         ],
         steps: [
             { stepNumber: 1, instruction: 'Blend peas, besan, garlic, ginger, chillies, and water into a thick paste. Mix spices and coriander.' },
@@ -329,9 +329,9 @@ const SAMPLE_RECIPES = [{
             { name: 'Turmeric Powder', amount: '0.25', unit: 'tsp' },
             { name: 'Coriander Powder', amount: '1', unit: 'tsp' },
             { name: 'Desi Ghee', amount: '1', unit: 'tbsp' },
-            { name: 'Salt', amount: '', unit: 'to taste' },
+            { name: 'Salt', amount: 'as needed', unit: 'to taste' },
             { name: 'Green Chillies', amount: '3', unit: 'pieces' },
-            { name: 'Fresh Coriander Leaves', amount: '', unit: 'for garnish' }
+            { name: 'Fresh Coriander Leaves', amount: 'as needed', unit: 'for garnish' }
         ],
         steps: [
             { stepNumber: 1, instruction: 'Boil red chillies, garlic, ginger, tomato, and coriander stems. Blend into chutney.' },
@@ -359,7 +359,7 @@ const SAMPLE_RECIPES = [{
             { name: 'Noodles', amount: '500', unit: 'g' },
             { name: 'Water', amount: '2', unit: 'litre' },
             { name: 'Salt', amount: '2', unit: 'tbsp' },
-            { name: 'Oil', amount: '', unit: 'as needed' },
+            { name: 'Oil', amount: 'as needed', unit: 'as needed' },
             { name: 'Garlic', amount: '10', unit: 'cloves' },
             { name: 'Green Chillies', amount: '4', unit: 'pieces' },
             { name: 'Onions', amount: '2', unit: 'medium' },
@@ -402,9 +402,9 @@ const SAMPLE_RECIPES = [{
             { name: 'Green Chilli Paste', amount: '1', unit: 'tsp' },
             { name: 'Turmeric Powder', amount: '0.5', unit: 'tsp' },
             { name: 'Corn Starch', amount: '6', unit: 'tbsp' },
-            { name: 'Oil', amount: '', unit: 'for frying' },
-            { name: 'Salt', amount: '', unit: 'to taste' },
-            { name: 'Peri Peri Masala', amount: '', unit: 'optional' }
+            { name: 'Oil', amount: 'as needed', unit: 'for frying' },
+            { name: 'Salt', amount: 'as needed', unit: 'to taste' },
+            { name: 'Peri Peri Masala', amount: 'as needed', unit: 'optional' }
         ],
         steps: [
             { stepNumber: 1, instruction: 'Peel and cut potatoes into uniform sticks. Do not wash after cutting.' },
@@ -433,7 +433,7 @@ const SAMPLE_RECIPES = [{
             { name: 'Baking Soda', amount: '0.125', unit: 'tsp' },
             { name: 'Cumin Seeds', amount: '0.5', unit: 'tsp' },
             { name: 'Black Pepper', amount: '0.5', unit: 'tsp' },
-            { name: 'Oil', amount: '', unit: 'for frying' }
+            { name: 'Oil', amount: 'as needed', unit: 'for frying' }
         ],
         steps: [
             { stepNumber: 1, instruction: 'Boil water and add salt, baking soda, cumin, and pepper.' },
