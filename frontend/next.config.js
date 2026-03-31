@@ -11,7 +11,7 @@ const nextConfig = {
             { protocol: 'https', hostname: 'images.unsplash.com' },
             { protocol: 'https', hostname: 'res.cloudinary.com' },
             { protocol: 'https', hostname: 'via.placeholder.com' },
-            { protocol: 'http', hostname: 'localhost', port: '5000' }
+            { protocol: 'http', hostname: 'https://quick-make-backend.onrender.com' }
         ],
         formats: ['image/avif', 'image/webp'],
         deviceSizes: [640, 750, 828, 1080, 1200, 1920],

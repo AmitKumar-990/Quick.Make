@@ -172,7 +172,7 @@ const SAMPLE_RECIPES = [{
         servings: 4,
         tags: ['biryani', 'soya', 'rice', 'indian', 'veg'],
         nutrition: { calories: 420, protein: 18, carbs: 60, fat: 12, fiber: 6 },
-        image: { url: 'http://localhost:5000/images/recipes/vb.png', alt: 'Soya Veg Biryani' },
+        image: { url: 'https://quick-make-backend.onrender.com/images/recipes/vb.png', alt: 'Soya Veg Biryani' },
     },
     {
         title: 'Soya Chilli',
@@ -215,7 +215,7 @@ const SAMPLE_RECIPES = [{
         servings: 4,
         tags: ['soya', 'chilli', 'indo-chinese', 'starter', 'crispy'],
         nutrition: { calories: 300, protein: 20, carbs: 25, fat: 12, fiber: 5 },
-        image: { url: 'http://localhost:5000/images/recipes/sc.png', alt: 'Soya Chilli' },
+        image: { url: 'https://quick-make-backend.onrender.com/images/recipes/sc.png', alt: 'Soya Chilli' },
     },
     {
         title: 'Kadai Paneer',
@@ -260,7 +260,7 @@ const SAMPLE_RECIPES = [{
         servings: 4,
         tags: ['paneer', 'kadai', 'indian', 'gravy'],
         nutrition: { calories: 350, protein: 18, carbs: 15, fat: 25, fiber: 4 },
-        image: { url: 'http://localhost:5000/images/recipes/mp.png', alt: 'Kadai Paneer' },
+        image: { url: 'https://quick-make-backend.onrender.com/images/recipes/mp.png', alt: 'Kadai Paneer' },
     },
     {
         title: 'Matar Ki Sabzi',
@@ -305,7 +305,7 @@ const SAMPLE_RECIPES = [{
         servings: 4,
         tags: ['matar', 'curry', 'indian', 'veg'],
         nutrition: { calories: 280, protein: 12, carbs: 30, fat: 12, fiber: 8 },
-        image: { url: 'http://localhost:5000/images/recipes/peas.png', alt: 'Matar Ki Sabzi' },
+        image: { url: 'https://quick-make-backend.onrender.com/images/recipes/peas.png', alt: 'Matar Ki Sabzi' },
     },
     {
         title: 'Aloo Matar Pulao',
@@ -350,7 +350,7 @@ const SAMPLE_RECIPES = [{
         servings: 4,
         tags: ['pulao', 'rice', 'aloo', 'matar'],
         nutrition: { calories: 320, protein: 8, carbs: 55, fat: 8, fiber: 6 },
-        image: { url: 'http://localhost:5000/images/recipes/image  .png', alt: 'Aloo Matar Pulao' },
+        image: { url: 'https://quick-make-backend.onrender.com/images/recipes/image  .png', alt: 'Aloo Matar Pulao' },
     },
     {
         title: 'Veg Chowmein',
@@ -391,7 +391,7 @@ const SAMPLE_RECIPES = [{
         servings: 4,
         tags: ['noodles', 'chowmein', 'street-food', 'indo-chinese'],
         nutrition: { calories: 350, protein: 10, carbs: 55, fat: 10, fiber: 5 },
-        image: { url: 'http://localhost:5000/images/recipes/ch.png', alt: 'Veg Chowmein' },
+        image: { url: 'https://quick-make-backend.onrender.com/images/recipes/ch.png', alt: 'Veg Chowmein' },
     },
     {
         title: 'Crispy French Fries',
@@ -421,7 +421,7 @@ const SAMPLE_RECIPES = [{
         servings: 3,
         tags: ['fries', 'snack', 'crispy', 'fast-food'],
         nutrition: { calories: 300, protein: 4, carbs: 45, fat: 14, fiber: 4 },
-        image: { url: 'http://localhost:5000/images/recipes/ff.png', alt: 'French Fries' },
+        image: { url: 'https://quick-make-backend.onrender.com/images/recipes/ff.png', alt: 'French Fries' },
     },
     {
         title: 'Suji Papad',
@@ -450,7 +450,7 @@ const SAMPLE_RECIPES = [{
         servings: 6,
         tags: ['papad', 'snack', 'suji', 'crispy'],
         nutrition: { calories: 200, protein: 5, carbs: 30, fat: 6, fiber: 2 },
-        image: { url: 'http://localhost:5000/images/recipes/paper.png', alt: 'Suji Papad' },
+        image: { url: 'https://quick-make-backend.onrender.com/images/recipes/paper.png', alt: 'Suji Papad' },
     }
 ];
 
