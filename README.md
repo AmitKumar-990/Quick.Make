@@ -9,7 +9,7 @@ A full-stack MERN + Next.js recipe suggestion app with AI-powered features, comp
 | Frontend | Next.js 14 (App Router), TypeScript, Tailwind CSS |
 | Backend | Node.js, Express.js |
 | Database | MongoDB + Mongoose |
-| AI | Google Gemini (`gemini-1.5-pro` / `gemini-1.5-flash`) |
+| AI | Groq |
 | Auth | JWT + bcrypt |
 | State | Zustand + React Query |
 | Images | Cloudinary |
@@ -99,71 +99,6 @@ npm run dev
 cd frontend
 npm run dev
 # Runs on http://localhost:3000
-```
-
----
-
-## 📁 Project Structure
-
-```
-quickmake/
-├── backend/
-│   ├── models/          # Mongoose schemas
-│   │   ├── User.js
-│   │   ├── Recipe.js
-│   │   ├── Review.js
-│   │   └── MealPlan.js
-│   ├── routes/          # Express routes
-│   │   ├── auth.js
-│   │   ├── recipes.js
-│   │   ├── ai.js
-│   │   ├── reviews.js
-│   │   ├── users.js
-│   │   └── mealPlan.js
-│   ├── middleware/
-│   │   ├── auth.js      # JWT middleware
-│   │   └── upload.js    # Cloudinary upload
-│   ├── scripts/
-│   │   └── seed.js      # Database seeder
-│   └── server.js        # Express app entry
-│
-└── frontend/
-    └── src/
-        ├── app/                    # Next.js App Router pages
-        │   ├── page.tsx            # Home page (SSR)
-        │   ├── layout.tsx          # Root layout + metadata
-        │   ├── sitemap.ts          # Dynamic sitemap
-        │   ├── robots.ts           # robots.txt
-        │   ├── recipes/
-        │   │   ├── page.tsx        # Recipe listing (SSR)
-        │   │   └── [slug]/
-        │   │       └── page.tsx    # Recipe detail (SSR + JSON-LD)
-        │   ├── ai-suggest/
-        │   ├── search/
-        │   ├── meal-planner/
-        │   ├── upload-recipe/
-        │   ├── saved/
-        │   ├── profile/
-        │   └── auth/
-        │       ├── login/
-        │       └── register/
-        ├── components/
-        │   ├── layout/         # Navbar, Footer
-        │   ├── home/           # Hero, FeaturedRecipes, etc.
-        │   ├── recipe/         # RecipeCard, RecipeDetail, etc.
-        │   ├── ai/             # AI suggestion UI
-        │   ├── auth/           # Login/Register forms
-        │   ├── meal-plan/      # Meal planner
-        │   ├── search/         # Search UI
-        │   ├── user/           # Profile, Saved
-        │   └── seo/            # JSON-LD structured data
-        ├── lib/
-        │   ├── api/            # Server-side fetch functions
-        │   └── utils.ts
-        ├── store/
-        │   └── authStore.ts    # Zustand auth state
-        └── providers/
-            └── QueryProvider.tsx
 ```
 
 ---
@@ -334,7 +269,7 @@ npm start
 
 ## 📝 License
 
-MIT — free to use, modify, and deploy.
+Free to use, modify, and deploy.
 
 ---
 
