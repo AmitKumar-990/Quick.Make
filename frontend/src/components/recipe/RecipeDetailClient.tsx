@@ -154,9 +154,9 @@ export default function RecipeDetailClient({ recipe }: { recipe: any }) {
               </div>
               {/* Servings adjuster */}
               <div className="flex items-center justify-center gap-2">
-                <button onClick={() => setServings(s => Math.max(1, s - 1))} className="h-6 w-6 rounded-full bg-surface-200 dark:bg-surface-700 text-sm font-bold hover:bg-brand-100 transition-colors">-</button>
+                <button onClick={() => setServings((s: number) => Math.max(1, s - 1))} className="h-6 w-6 rounded-full bg-surface-200 dark:bg-surface-700 text-sm font-bold hover:bg-brand-100 transition-colors">-</button>
                 <span className="text-lg font-bold text-surface-900 dark:text-white" itemProp="recipeYield">{servings}</span>
-                <button onClick={() => setServings(s => s + 1)} className="h-6 w-6 rounded-full bg-surface-200 dark:bg-surface-700 text-sm font-bold hover:bg-brand-100 transition-colors">+</button>
+                <button onClick={() => setServings((s: number) => s + 1)} className="h-6 w-6 rounded-full bg-surface-200 dark:bg-surface-700 text-sm font-bold hover:bg-brand-100 transition-colors">+</button>
               </div>
               <div className="text-xs text-surface-500">Servings</div>
             </div>
@@ -175,7 +175,7 @@ export default function RecipeDetailClient({ recipe }: { recipe: any }) {
           {recipe.averageRating > 0 && (
             <div className="flex items-center gap-2">
               <div className="flex">
-                {[1,2,3,4,5].map(n => (
+                {[1, 2, 3, 4, 5].map(n => (
                   <Star key={n} className={cn('h-4 w-4', n <= Math.round(recipe.averageRating) ? 'fill-amber-400 text-amber-400' : 'text-surface-300')} />
                 ))}
               </div>
