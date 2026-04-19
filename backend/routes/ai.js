@@ -22,8 +22,81 @@ function cleanJson(text) {
     return text.replace(/```json\s*/gi, '').replace(/```\s*/g, '').trim();
 }
 
+
+async function fetchRecipeImage(recipeTitle, cuisine, dietType, ingredients = []) {
+    try {
+        // Build a precise query using title + diet + top ingredients
+        const topIngredients = ingredients
+            .slice(0, 3)
+            .map(i => i.name)
+            .join(' ');
+
+        const dietWord = dietType === 'veg' || dietType === 'vegan'
+            ? 'vegetarian'
+            : '';
+
+        const query = encodeURIComponent(
+            `${recipeTitle} ${dietWord} ${cuisine} food`.trim()
+        );
+
+        const response = await fetch(
+            `https://api.unsplash.com/search/photos?query=${query}&per_page=5&orientation=landscape&content_filter=high`,
+            { headers: { Authorization: `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}` } }
+        );
+        const data = await response.json();
+
+        if (data.results && data.results.length > 0) {
+            // Pick best match — prefer results where title words appear in description
+            const titleWords = recipeTitle.toLowerCase().split(' ');
+            const best = data.results.find(r =>
+                titleWords.some(word =>
+                    r.description?.toLowerCase().includes(word) ||
+                    r.alt_description?.toLowerCase().includes(word)
+                )
+            ) || data.results[0];
+
+            return {
+                url: best.urls.full,
+                alt: best.alt_description || recipeTitle,
+            };
+        }
+    } catch (err) {
+        console.error('Unsplash error:', err.message);
+    }
+    return { url: '', alt: recipeTitle };
+}
+
+// // Helper: fetch a relevant food image from Unsplash
+// async function fetchRecipeImage(recipeTitle, cuisine) {
+//     try {
+//         const query = encodeURIComponent(`${recipeTitle} ${cuisine} food`);
+//         const response = await fetch(
+//             `https://api.unsplash.com/search/photos?query=${query}&per_page=1&orientation=landscape`,
+//             {
+//                 headers: {
+//                     Authorization: `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}`,
+//                 },
+//             }
+//         );
+//         const data = await response.json();
+//         if (data.results && data.results.length > 0) {
+//             return {
+//                 url: data.results[0].urls.regular,
+//                 alt: data.results[0].alt_description || recipeTitle,
+//             };
+//         }
+//     } catch (err) {
+//         console.error('Unsplash fetch error:', err.message);
+//     }
+//     // Fallback if Unsplash fails
+//     return {
+//         url: '',
+//         alt: recipeTitle,
+//     };
+// }
+
 // POST /api/ai/suggest - AI recipe suggestions from ingredients/context
-router.post('/suggest', async(req, res) => {
+router.post('/suggest', async (req, res) => {
     try {
         const { ingredients = [], context = '', dietType, cuisine, maxTime, difficulty } = req.body;
 
@@ -71,7 +144,21 @@ Respond with ONLY a valid JSON array, no markdown fences, no extra text:
         if (!jsonMatch) return res.status(500).json({ error: 'AI response parsing failed.' });
 
         const suggestions = JSON.parse(jsonMatch[0]);
-        res.json({ suggestions, isAIGenerated: true });
+
+        // Fetch images for all recipes in parallel
+        const suggestionsWithImages = await Promise.all(
+            suggestions.map(async (recipe) => {
+                const image = await fetchRecipeImage(
+                    recipe.title,
+                    recipe.cuisine,
+                    recipe.dietType,
+                    recipe.ingredients
+                );
+                return { ...recipe, image };
+            })
+        );
+
+        res.json({ suggestions: suggestionsWithImages, isAIGenerated: true });
     } catch (err) {
         console.error('Groq suggest error:', err.message);
         res.status(500).json({ error: 'AI service error. Please try again.' });
@@ -79,7 +166,7 @@ Respond with ONLY a valid JSON array, no markdown fences, no extra text:
 });
 
 // POST /api/ai/context-ideas - Context-based ideas (leftovers, quick meals, etc.)
-router.post('/context-ideas', async(req, res) => {
+router.post('/context-ideas', async (req, res) => {
     try {
         const { context, ingredients = [] } = req.body;
 
@@ -112,7 +199,7 @@ Respond with ONLY a JSON array, no markdown, no extra text:
 });
 
 // POST /api/ai/missing-ingredients - Check what's missing (no AI call needed)
-router.post('/missing-ingredients', async(req, res) => {
+router.post('/missing-ingredients', async (req, res) => {
     try {
         const { recipeId, userIngredients } = req.body;
 
@@ -154,7 +241,7 @@ router.post('/missing-ingredients', async(req, res) => {
 });
 
 // POST /api/ai/generate-full-recipe - Save AI recipe to DB
-router.post('/generate-full-recipe', protect, async(req, res) => {
+router.post('/generate-full-recipe', protect, async (req, res) => {
     try {
         const { recipeData } = req.body;
         const recipe = await Recipe.create({
@@ -170,7 +257,7 @@ router.post('/generate-full-recipe', protect, async(req, res) => {
 });
 
 // POST /api/ai/meal-plan - Generate AI weekly meal plan
-router.post('/meal-plan', protect, async(req, res) => {
+router.post('/meal-plan', protect, async (req, res) => {
     try {
         const { preferences } = req.body;
 
@@ -200,7 +287,7 @@ Respond ONLY with a raw JSON object, no markdown fences, no extra text:
 });
 
 // POST /api/ai/enhance-recipe - Improve a user-uploaded recipe description
-router.post('/enhance-recipe', protect, async(req, res) => {
+router.post('/enhance-recipe', protect, async (req, res) => {
     try {
         const { title, description, ingredients } = req.body;
 

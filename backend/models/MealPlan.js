@@ -11,13 +11,41 @@ const mealPlanSchema = new mongoose.Schema({
     required: true,
   },
   days: {
-    monday: { breakfast: { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' }, lunch: { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' }, dinner: { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' } },
-    tuesday: { breakfast: { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' }, lunch: { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' }, dinner: { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' } },
-    wednesday: { breakfast: { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' }, lunch: { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' }, dinner: { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' } },
-    thursday: { breakfast: { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' }, lunch: { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' }, dinner: { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' } },
-    friday: { breakfast: { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' }, lunch: { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' }, dinner: { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' } },
-    saturday: { breakfast: { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' }, lunch: { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' }, dinner: { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' } },
-    sunday: { breakfast: { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' }, lunch: { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' }, dinner: { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' } },
+    monday: {
+      breakfast: { type: String, default: '' },
+      lunch: { type: String, default: '' },
+      dinner: { type: String, default: '' }
+    },
+    tuesday: {
+      breakfast: { type: String, default: '' },
+      lunch: { type: String, default: '' },
+      dinner: { type: String, default: '' }
+    },
+    wednesday: {
+      breakfast: { type: String, default: '' },
+      lunch: { type: String, default: '' },
+      dinner: { type: String, default: '' }
+    },
+    thursday: {
+      breakfast: { type: String, default: '' },
+      lunch: { type: String, default: '' },
+      dinner: { type: String, default: '' }
+    },
+    friday: {
+      breakfast: { type: String, default: '' },
+      lunch: { type: String, default: '' },
+      dinner: { type: String, default: '' }
+    },
+    saturday: {
+      breakfast: { type: String, default: '' },
+      lunch: { type: String, default: '' },
+      dinner: { type: String, default: '' }
+    },
+    sunday: {
+      breakfast: { type: String, default: '' },
+      lunch: { type: String, default: '' },
+      dinner: { type: String, default: '' }
+    },
   },
   notes: { type: String, maxlength: 500 },
 }, { timestamps: true });

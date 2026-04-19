@@ -74,11 +74,22 @@ export default function AiSuggestClient() {
     if (!token) { toast.error('Please log in to save recipes'); return; }
     setSaving(idx);
     try {
-      await axios.post(
+      // Step 1 — Create the recipe in DB
+      const res = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/ai/generate-full-recipe`,
         { recipeData: recipe },
         { headers: { Authorization: `Bearer ${token}` } }
       );
+
+      const savedRecipe = res.data.recipe;
+
+      // Step 2 — Also add it to user's savedRecipes list
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/recipes/${savedRecipe._id}/save`,
+        {},
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
       toast.success(`"${recipe.title}" saved to your recipes!`);
     } catch {
       toast.error('Failed to save recipe');
@@ -86,7 +97,6 @@ export default function AiSuggestClient() {
       setSaving(null);
     }
   };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50/50 via-white to-purple-50/30 dark:from-surface-950 dark:via-surface-900 dark:to-surface-950">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12">
@@ -270,8 +280,8 @@ export default function AiSuggestClient() {
                           <span className={cn(
                             'text-xs font-bold px-2.5 py-1 rounded-full',
                             recipe.dietType === 'veg' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' :
-                            recipe.dietType === 'vegan' ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400' :
-                            'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
+                              recipe.dietType === 'vegan' ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400' :
+                                'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
                           )}>
                             {recipe.dietType === 'veg' || recipe.dietType === 'vegan' ? <Leaf className="h-3 w-3 inline mr-1" /> : null}
                             {recipe.dietType}

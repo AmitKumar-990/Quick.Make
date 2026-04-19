@@ -1,11 +1,12 @@
 'use client';
 import Link from 'next/link';
-import { Heart } from 'lucide-react';
-import { useQuery } from '@tanstack/react-query';
+import { Heart, BookOpen } from 'lucide-react';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { useAuthStore } from '@/store/authStore';
 import RecipeCard from '@/components/recipe/RecipeCard';
 import { motion } from 'framer-motion';
+import toast from 'react-hot-toast';
 
 export default function SavedRecipesClient() {
   const { token } = useAuthStore();
@@ -36,6 +37,21 @@ export default function SavedRecipesClient() {
 
   const recipes = data?.recipes || [];
 
+  const qc = useQueryClient();
+
+  const handleUnsave = async (recipeId: string) => {
+    try {
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/recipes/${recipeId}/save`,
+        {},
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      toast.success('Recipe removed from saved');
+      qc.invalidateQueries({ queryKey: ['saved-recipes'] });
+    } catch {
+      toast.error('Failed to unsave recipe');
+    }
+  };
   return (
     <div className="min-h-screen bg-surface-50 dark:bg-surface-950 py-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -69,7 +85,16 @@ export default function SavedRecipesClient() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {recipes.map((recipe: any, i: number) => (
-              <RecipeCard key={recipe._id} recipe={recipe} index={i} />
+              <div key={recipe._id} className="relative group">
+                <RecipeCard recipe={recipe} index={i} />
+                <button
+                  onClick={() => handleUnsave(recipe._id)}
+                  className="absolute top-3 right-3 z-10 flex items-center gap-1.5 bg-red-500 hover:bg-red-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow opacity-0 group-hover:opacity-100 transition-all duration-200"
+                >
+                  <Heart className="h-3 w-3 fill-white" />
+                  Unsave
+                </button>
+              </div>
             ))}
           </div>
         )}
