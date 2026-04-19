@@ -52,8 +52,9 @@ Fill in:
 ```env
 PORT=5000
 MONGODB_URI=mongodb://localhost:27017/quickmake
-JWT_SECRET=your_very_long_random_secret
-GEMINI_API_KEY=your_gemini_api_key
+JWT_SECRET=jwt_secret
+GEMINI_API_KEY=gemini_api_key
+UNSPLASH_ACCESS_KEY=unsplash_api_key
 CLOUDINARY_CLOUD_NAME=...
 CLOUDINARY_API_KEY=...
 CLOUDINARY_API_SECRET=...
